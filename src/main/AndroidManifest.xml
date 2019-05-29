@@ -10,7 +10,9 @@
     android:allowBackup="false">
     <activity
       android:name=".MainActivity"
-      android:label="@string/app_title">
+      android:label="@string/app_title"
+      android:theme="@style/Theme.AppCompat.DayNight"
+      android:icon="@drawable/ic_cat">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

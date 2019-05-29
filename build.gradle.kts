@@ -29,7 +29,7 @@ android {
     versionName = "1.0"
   }
 
-  sequenceOf("main", "test").forEach {
+  sequenceOf("main", "test", "androidTest").forEach {
     sourceSets[it].java.srcDir("src/$it/kotlin")
   }
 
