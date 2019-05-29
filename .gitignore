@@ -1,0 +1,17 @@
+# gradle cache
+.gradle/
+
+# local properties
+local.properties
+
+# MacOS crap
+.DS_Store
+
+# IntelliJ
+*.iml
+.idea/*
+!.idea/codeStyles/
+!.idea/runConfigurations/
+
+# build directories
+build/
