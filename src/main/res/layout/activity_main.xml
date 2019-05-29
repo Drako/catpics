@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical">
-
-  <Button
-    android:id="@+id/reloadButton"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:onClick="loadCatPics"
-    android:text="@string/text_reload" />
+  android:orientation="vertical"
+  android:id="@+id/swiper">
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/catList"
@@ -23,4 +17,4 @@
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     tools:itemCount="6"
     tools:listitem="@layout/image_view"/>
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

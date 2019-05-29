@@ -29,6 +29,9 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     holder.bind(imageUrls[position])
+    holder.itemView.setOnClickListener {
+      holder.itemView.context.showToast(imageUrls[position])
+    }
   }
 
   class ViewHolder(

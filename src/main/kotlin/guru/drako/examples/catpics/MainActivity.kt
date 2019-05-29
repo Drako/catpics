@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
       catImageAdapter.imageUrls = catApi.getCatPics(limit = 6).map { metaData ->
         metaData.url
       }
+      swiper.isRefreshing = false
     }
   }
 
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     catList.adapter = catImageAdapter
 
     loadCatPics()
+
+    swiper.setOnRefreshListener {
+      loadCatPics()
+    }
   }
 
   override fun onDestroy() {
