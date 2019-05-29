@@ -3,4 +3,5 @@
   <string name="app_title">Katzenbilder</string>
   <string name="click_me">Klick mich!</string>
   <string name="hello_world">Hallo Welt!</string>
+  <string name="text_reload">Lade neue Bilder</string>
 </resources>

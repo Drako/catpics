@@ -3,19 +3,30 @@ package guru.drako.examples.catpics
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.*
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
-  override fun onCreate(savedInstanceState: Bundle?) {
+  val catImageAdapter = ImageAdapter()
 
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+  val catApi: CatApi by inject()
+
+  fun loadCatPics(v: View? = null) {
+    launch {
+      catImageAdapter.imageUrls = catApi.getCatPics(limit = 6).map { metaData ->
+        metaData.url
+      }
+    }
   }
 
-  fun handleOnClickButton(v: View) {
-    showToast(R.string.hello_world)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+
+    catList.adapter = catImageAdapter
+
+    loadCatPics()
   }
 
   override fun onDestroy() {

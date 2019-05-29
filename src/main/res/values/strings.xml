@@ -3,4 +3,5 @@
   <string name="app_title">Cat Pictures</string>
   <string name="click_me">Click me!</string>
   <string name="hello_world">Hello world!</string>
+  <string name="text_reload">Load new images</string>
 </resources>
