@@ -61,8 +61,11 @@ dependencies {
   implementation(androidX(AndroidX.APPCOMPAT))
   implementation(androidX(AndroidX.CORE_KTX))
   implementation(androidX(AndroidX.CONSTRAINTLAYOUT))
+  implementation(androidX(AndroidX.FRAGMENT_KTX))
   implementation(androidX(AndroidX.RECYCLERVIEW))
+  implementation(androidX(AndroidX.SWIPEREFRESHLAYOUT))
   implementation(androidX(AndroidX.VECTORDRAWABLE))
+  implementation(androidX(AndroidX.VIEWPAGER))
 
   implementation(ktxCoroutines("core"))
   implementation(ktxCoroutines("android"))
@@ -81,7 +84,7 @@ dependencies {
   androidTestImplementation(kotlinArtifact("test-junit"))
   androidTestImplementation("androidx.test:runner:1.1.1")
   androidTestImplementation("androidx.test:rules:1.1.1")
-  androidTestImplementation("androidx.test.ext:junit-ktx:1.1.0")
+  androidTestImplementation("androidx.test.ext:junit-ktx:1.1.1")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.1.1")
 }
 

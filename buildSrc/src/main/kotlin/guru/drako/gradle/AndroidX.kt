@@ -11,7 +11,9 @@ enum class AndroidX(val version: String) {
   LIFECYCLE_EXTENSIONS(version = "2.0.0"),
   PREFERENCE_KTX(version = "1.1.0-alpha03"),
   RECYCLERVIEW(version = "1.0.0"),
-  VECTORDRAWABLE(version = "1.0.1");
+  SWIPEREFRESHLAYOUT(version = "1.0.0"),
+  VECTORDRAWABLE(version = "1.0.1"),
+  VIEWPAGER(version = "1.0.0");
 }
 
 @Suppress("unused") // receiver is used for scoping

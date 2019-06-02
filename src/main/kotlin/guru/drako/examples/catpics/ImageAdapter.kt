@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.image_view.*
+import kotlinx.android.synthetic.main.image_list_item.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import kotlin.properties.Delegates
@@ -19,7 +19,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     val view = LayoutInflater
       .from(parent.context)
-      .inflate(R.layout.image_view, parent, false)
+      .inflate(R.layout.image_list_item, parent, false)
     return ViewHolder(view)
   }
 
@@ -29,8 +29,8 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     holder.bind(imageUrls[position])
-    holder.itemView.setOnClickListener {
-      holder.itemView.context.showToast(imageUrls[position])
+    holder.itemView.setOnClickListener { view ->
+      DetailActivity.start(view.context, imageUrls.toTypedArray(), position)
     }
   }
 

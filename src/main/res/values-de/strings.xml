@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_title">Katzenbilder</string>
+  <string name="detail_title">Katzenbild</string>
   <string name="click_me">Klick mich!</string>
   <string name="hello_world">Hallo Welt!</string>
   <string name="text_reload">Lade neue Bilder</string>

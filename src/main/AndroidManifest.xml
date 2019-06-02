@@ -10,15 +10,23 @@
     android:allowBackup="false">
     <activity
       android:name=".MainActivity"
+      android:icon="@drawable/ic_cat"
       android:label="@string/app_title"
-      android:theme="@style/Theme.AppCompat.DayNight"
-      android:icon="@drawable/ic_cat">
+      android:screenOrientation="fullSensor"
+      android:theme="@style/Theme.AppCompat">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <activity
+      android:name=".DetailActivity"
+      android:label="@string/detail_title"
+      android:parentActivityName=".MainActivity"
+      android:screenOrientation="fullSensor"
+      android:theme="@style/Theme.AppCompat"></activity>
   </application>
 
 </manifest>
