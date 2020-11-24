@@ -12,8 +12,9 @@ pluginManagement {
   }
   resolutionStrategy {
     eachPlugin {
-      knownPlugins["${requested.id}"]?.let { module ->
-        useModule("$module:${requested.version}")
+      when ("${requested.id}") {
+        "com.android.application" -> useModule("com.android.tools.build:gradle:${requested.version}")
+        "com.android.library" -> useModule("com.android.tools.build:gradle:${requested.version}")
       }
     }
   }

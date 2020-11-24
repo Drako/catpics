@@ -1,5 +1,6 @@
 package guru.drako.examples.catpics
 
+import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import android.os.Bundle
 import android.view.Surface.ROTATION_270
 import android.view.Surface.ROTATION_90
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
   private val catApi: CatApi by inject()
 
-  private fun loadCatPics(v: View? = null) {
+  private fun loadCatPics() {
     launch {
       catImageAdapter.imageUrls = catApi.getCatPics(limit = 6).map { metaData ->
         metaData.url
@@ -45,9 +46,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    when (getSystemService<WindowManager>()!!.defaultDisplay.rotation) {
-      ROTATION_90 -> catList.spanCount = 3
-      ROTATION_270 -> catList.spanCount = 3
+    when (resources.configuration.orientation) {
+      ORIENTATION_LANDSCAPE -> catList.spanCount = 3
       else -> catList.spanCount = 2
     }
 
@@ -62,10 +62,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     }
   }
 
-  override fun onSaveInstanceState(outState: Bundle?) {
-    outState?.apply {
-      putStringArray(KEY_IMAGE_URLS, catImageAdapter.imageUrls.toTypedArray())
-    }
+  override fun onSaveInstanceState(outState: Bundle) {
+    outState.putStringArray(KEY_IMAGE_URLS, catImageAdapter.imageUrls.toTypedArray())
 
     super.onSaveInstanceState(outState)
   }

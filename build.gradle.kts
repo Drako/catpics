@@ -1,32 +1,41 @@
 import guru.drako.gradle.*
 
 plugins {
-    id("com.android.application") version "3.4.1"
-    kotlin("android") version "1.3.31"
-    kotlin("android.extensions") version "1.3.31"
+  id("com.android.application") version "4.0.2"
+  kotlin("android") version "1.4.10"
+  kotlin("android.extensions") version "1.4.10"
 }
 
 group = "guru.drako.examples.catpics"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    mavenCentral()
-    jcenter()
-    google()
-    kotlinx()
+  mavenCentral()
+  jcenter()
+  google()
 }
 
 android {
-  compileSdkVersion(28)
+  compileSdkVersion(30)
 
   defaultConfig {
-    minSdkVersion(17)
-    targetSdkVersion(28)
+    minSdkVersion(16)
+    targetSdkVersion(30)
     applicationId = "guru.drako.examples.catpics"
     vectorDrawables.generatedDensities("hdpi", "xxhdpi")
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     versionCode = 1
     versionName = "1.0"
+    multiDexEnabled = true
+  }
+
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
   }
 
   sequenceOf("main", "test", "androidTest").forEach {
@@ -54,7 +63,7 @@ androidExtensions {
 }
 
 dependencies {
-  implementation(kotlinArtifact("stdlib-jdk7"))
+  implementation(kotlinArtifact("stdlib-jdk8"))
   implementation(kotlinArtifact("reflect"))
   testImplementation(kotlinArtifact("test-junit"))
 
@@ -62,6 +71,7 @@ dependencies {
   implementation(androidX(AndroidX.CORE_KTX))
   implementation(androidX(AndroidX.CONSTRAINTLAYOUT))
   implementation(androidX(AndroidX.FRAGMENT_KTX))
+  implementation(androidX(AndroidX.MULTIDEX))
   implementation(androidX(AndroidX.RECYCLERVIEW))
   implementation(androidX(AndroidX.SWIPEREFRESHLAYOUT))
   implementation(androidX(AndroidX.VECTORDRAWABLE))
@@ -82,15 +92,15 @@ dependencies {
   implementation("com.squareup.picasso:picasso:2.71828")
 
   androidTestImplementation(kotlinArtifact("test-junit"))
-  androidTestImplementation("androidx.test:runner:1.1.1")
-  androidTestImplementation("androidx.test:rules:1.1.1")
-  androidTestImplementation("androidx.test.ext:junit-ktx:1.1.1")
-  androidTestImplementation("androidx.test.espresso:espresso-core:3.1.1")
+  androidTestImplementation("androidx.test:runner:1.3.0")
+  androidTestImplementation("androidx.test:rules:1.3.0")
+  androidTestImplementation("androidx.test.ext:junit-ktx:1.1.2")
+  androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 }
 
 tasks {
   "wrapper"(Wrapper::class) {
-    gradleVersion = "5.4.1"
+    gradleVersion = "6.7.1"
   }
 
   "clean"(Delete::class) {

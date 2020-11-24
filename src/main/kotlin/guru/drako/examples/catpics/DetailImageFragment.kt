@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.android.ext.android.inject
+import org.koin.core.component.KoinComponent
 
 class DetailImageFragment : Fragment(), KoinComponent {
   companion object {

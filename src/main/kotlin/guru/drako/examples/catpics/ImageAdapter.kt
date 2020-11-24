@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.image_list_item.*
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import kotlin.properties.Delegates
 
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
@@ -37,7 +37,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
   class ViewHolder(
     override val containerView: View
   ) : RecyclerView.ViewHolder(containerView), LayoutContainer, KoinComponent {
-    val picasso: Picasso by inject()
+    private val picasso: Picasso by inject()
 
     fun bind(url: String) {
       picasso.load(url).into(imageView)

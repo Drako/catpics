@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import android.os.PersistableBundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
@@ -43,13 +44,13 @@ class DetailActivity : AppCompatActivity() {
     pager.currentItem = state.currentImage
   }
 
-  override fun onSaveInstanceState(outState: Bundle?) {
-    outState?.apply {
-      putParcelable(KEY_STATE, State(
+  override fun onSaveInstanceState(outState: Bundle) {
+    outState.putParcelable(
+      KEY_STATE, State(
         imageUrls = state.imageUrls,
         currentImage = pager.currentItem
-      ))
-    }
+      )
+    )
 
     super.onSaveInstanceState(outState)
   }
@@ -61,7 +62,8 @@ class DetailActivity : AppCompatActivity() {
     return true
   }
 
-  private inner class ImageAdapter : FragmentStatePagerAdapter(supportFragmentManager) {
+  private inner class ImageAdapter :
+    FragmentStatePagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getCount(): Int {
       return state.imageUrls.size
     }
